@@ -1,4 +1,4 @@
-<?php
+<h1?php
 require ("includes/common.php");
 session_start();
 ?>
@@ -26,39 +26,31 @@ session_start();
     <div class="container mt-5 ">
       <div class="row justify-content-around">
         <div class="col-md-5 mt-3">
-          <h3 class="text-dark pt-3 title">Quienes somos?</h3>
+          <h1 class="text-dark pt-3 title"> ¿Quiénes somos?</h1>
           <hr />
           <img
             src="images/jholsan.png"
             class="img-fluid d-block rounded mx-auto image-thumbnail">
-          <p class="mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed atque, consequuntur cumque odit
-            sapiente blanditiis, expedita ipsam molestiae voluptates reprehenderit ea modi eaque rerum dicta dolores,
-            iusto ullam aliquid non?
-            Quidem quae odio nemo cumque consectetur natus doloremque voluptatem consequatur voluptate laboriosam, amet
-            maiores excepturi sunt aliquid magni voluptatibus aperiam laudantium dolores reiciendis? Laborum laboriosam,
-            nam ullam totam amet et.
-            Earum recusandae voluptate accusantium, placeat alias consequuntur aspernatur sed explicabo impedit et aut
-            assumenda hic repellendus esse facere ratione quod vitae laudantium. Obcaecati nobis sequi esse assumenda,
-            rerum dolores pariatur.</p>
+          <p class="mt-2">En JHOLSAN, nos dedicamos a proporcionar uniformes médicos de alta calidad que combinan comodidad,
+             durabilidad y estilo. Con más de 20 años de experiencia en el sector, nos hemos consolidado como líderes en la industria, 
+             ofreciendo soluciones que satisfacen las necesidades de profesionales de la salud en todo el país.</p>
         </div>
         <div class="col-md-5 mt-3">
           <span class="text-dark pt-3">
-            <h1 class="title">Soporte</h1>
-            <h3>Soporte técnico 24/7</h3>
+            <h1 class="title">Nuestra Misión</h1>
           </span>
           <hr>
           <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed atque, consequuntur cumque odit
-            sapiente blanditiis, expedita ipsam molestiae voluptates reprehenderit ea modi eaque rerum dicta dolores,
-            iusto ullam aliquid non?
-            Quidem quae odio nemo cumque consectetur natus doloremque voluptatem consequatur voluptate laboriosam, amet
-            maiores excepturi sunt aliquid magni voluptatibus aperiam laudantium dolores reiciendis? Laborum laboriosam,
-            nam ullam totam amet et.
-            Earum recusandae voluptate accusantium, placeat alias consequuntur aspernatur sed explicabo impedit et aut
-            assumenda hic repellendus esse facere ratione quod vitae laudantium. Obcaecati nobis sequi esse assumenda,
-            rerum dolores pariatur
+          Nuestra misión es mejorar la experiencia de trabajo de los profesionales de la salud, 
+          ofreciéndoles uniformes que no solo cumplan con los estándares más altos de calidad y funcionalidad,
+           sino que también reflejen su profesionalismo y dedicación
           </p>
 
+          <span class="text-dark pt-3"></span>
+            <h1 class="title">Nuestra Visión</h1> 
+          <p>Aspiramos a ser la marca de referencia en uniformes médicos, reconocida por nuestra innovación, 
+            excelencia en el servicio al cliente y compromiso con la satisfacción del usuario</p>
+          </div>
         </div>
       </div>
     </div>
@@ -67,7 +59,7 @@ session_start();
   </div>
   <div class="container mt-3 d-flex justify-content-center card pb-3 col-md-6">
 
-    <form class="col-md-12" action="https://formspree.io/EnterYourEmail" method="POST" name="_next">
+    <form class="col-md-12"  method="POST" name="_next">
       <h3 class="text-dark pt-3 title mx-auto">Contactanos</h3>
       <div class="form-group">
         <label for="exampleFormControlInput1">Correo</label>

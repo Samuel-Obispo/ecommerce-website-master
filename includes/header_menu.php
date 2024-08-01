@@ -3,7 +3,7 @@
 <!--Navigation bar start-->
 <nav class="navbar fixed-top navbar-expand-sm navbar-dark" style="background-color:rgba(45,169,255)">
             <div class="container">
-                    <a href="index.php" class="navbar-brand" style="font-family: 'Delius Swash Caps'">Jholsan Uniformes</a>
+                    <a href="index.php" class="navbar-brand" class="images/jholan1.png" style="font-family: 'Delius Swash Caps'">Jholsan Uniformes</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynavbar">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -21,7 +21,14 @@
                                </div>
                            
                        </li>
-                       <li class="nav-item"><a href="index.php" class="nav-link">Ofertas</a></li>
+                       
+                       <li><div class="search-container">
+                <form action="products.php" method="POST" style="padding:0;">
+                <input type="text" placeholder="Search.." name="search_item" value="<?php if(isset($search)){echo $search;} ?>" style="margin: 0;">
+                <button type="submit" hidden><i class="fa fa-search "></i></button>
+                </form>
+            </div></li>
+
                        <li class="nav-item"><a href="about.php" class="nav-link">Sobre Nosotros</a></li>
                        <?php
                        if (isset($_SESSION['email'])) {
@@ -36,15 +43,15 @@
                 if (isset($_SESSION['email'])) {
                     ?>
                     <ul class="nav navbar-nav ml-auto">
-                       <li class="nav-item"><a href="logout_script.php" class="nav-link"><i class="fa fa-sign-out"></i>Logout</a></li>
+                       <li class="nav-item"><a href="logout_script.php" class="nav-link"><i class="fa fa-sign-out"></i>Cerrar sesión</a></li>
                        <li class="nav-item"><a  class="nav-link " data-placement="bottom" data-toggle="popover" data-trigger="hover" data-content="<?php echo $_SESSION['email'] ?>"><i class="fa fa-user-circle "></i></a></li>
                     </ul>
                     <?php
                 } else {
                     ?>
                     <ul class="nav navbar-nav ml-auto">
-                       <li class="nav-item "><a href="#signup" class="nav-link"data-toggle="modal" ><i class="fa fa-user"></i> Iniciar Sesión</a></li>
-                       <li class="nav-item "><a href="#login" class="nav-link" data-toggle="modal"><i class="fa fa-sign-in"></i> Acceder</a></li>
+                       <li class="nav-item "><a href="#signup" class="nav-link"data-toggle="modal" ><i class="fa fa-user"></i> Crear cuenta</a></li>
+                       <li class="nav-item "><a href="#login" class="nav-link" data-toggle="modal"><i class="fa fa-sign-in"></i> Inicia sesión</a></li>
                     </ul>
                     <?php 
                 }
@@ -60,7 +67,7 @@
           <div class="modal-content"style="background-color:rgba(255,255,255,0.95)">
 
             <div class="modal-header">
-              <h5 class="modal-title">Login</h5>
+              <h5 class="modal-title">Inicia sesión</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -98,7 +105,7 @@
           <div class="modal-content" style="background-color:rgba(255,255,255,0.95)">
 
             <div class="modal-header">
-              <h5 class="modal-title">Iniciar Sesión</h5>
+              <h5 class="modal-title">Login</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -136,9 +143,16 @@
             </div>
             <div class="modal-footer">
               <p class="mr-auto">Ya tienes una cuenta?<a href="#login"  data-toggle="modal" data-dismiss="modal">Inicia Sesión</a></p>
+              <br</br>
+              <!--Signup for Administrator-->
+            
+             <p class="mr-auto">Eres admin? <a href="login.html">Soy admin</a></p>
+              
+              <!---->
               <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>
             </div>
           </div>
         </div>
       </div>
       <!--Signup trigger model ends-->
+          

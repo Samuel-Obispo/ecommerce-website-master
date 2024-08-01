@@ -21,7 +21,7 @@ if (!isset($_SESSION['email'])) {
 </head>
 
 <body>
-    <div id="body-fix">
+    <div>
         <?php
         include 'includes/header_menu.php';
         ?>
@@ -31,7 +31,7 @@ if (!isset($_SESSION['email'])) {
                     <?php
                     $sum = 0;
                     $user_id = $_SESSION['user_id'];
-                    $query = " SELECT products.price AS Price, products.id, products.name AS Name FROM users_products JOIN products ON users_products.item_id = products.id WHERE users_products.user_id='$user_id' and status='confirmed'";
+                    $query = " SELECT products.price AS Price, products.id, products.name AS Name FROM users_products JOIN products ON users_products.item_id = products.id WHERE users_products.user_id='$user_id' and status='Confirmed'";
                     $result = mysqli_query($con, $query);
                     if (mysqli_num_rows($result) >= 1) {
                     ?>
@@ -49,10 +49,10 @@ if (!isset($_SESSION['email'])) {
                             while ($row = mysqli_fetch_array($result)) {
                                 $sum += $row["Price"];
                                 $id = $row["id"] . ", ";
-                                echo "<tr><td>" . "#" . $row["id"] . "</td><td>" . $row["Name"] . "</td><td>Rs " . $row["Price"] . "</td><td><a href='cart-remove.php?id={$row['id']}' class='remove_item_link'> Remove</a></td></tr>";
+                                echo "<tr><td>" . "#" . $row["id"] . "</td><td>" . $row["Name"] . "</td><td>$ " . $row["Price"] . "</td><td><a href='cart-remove.php?id={$row['id']}' class='remove_item_link'> Remove</a></td></tr>";
                             }
                             $id = rtrim($id, ", ");
-                            echo "<tr><td></td><td>Total</td><td>Rs " . $sum . "</td><td><a href='success.php' class='btn btn-primary'>Confirm Order</a></td></tr>";
+                            echo "<tr><td></td><td>Total</td><td>$ " . $sum . "</td><td><a href='success.php' class='btn btn-primary'>Confirm Order</a></td></tr>";
                             ?>
                         </tbody>
                     <?php

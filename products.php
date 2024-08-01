@@ -23,10 +23,18 @@ include 'includes/check-if-added.php';
 <!--header ends -->
 <div class="container" style="margin-top:65px">
          <!--jumbutron start-->
-        <div class="jumbotron text-center">
-            <h1>Bienvenido a Jholsan</h1>
-            <p>Todos nuestros productos estan unidos para que no se te dificulte el buscarlos! </p>
+         <div id="content">
+        <div id="bg" class=" ">
+            <div class="container" style="padding-top:150px">
+            <div class="mx-auto p-5 text-white" id="banner_content" style="border-radius: 0.5rem;" >
+            <h1 style="color:white;">Bienvenido a Jholsan </h1>
+            <p> Todos nuestros productos estan unidos para que no se te dificulte el buscarlos!</p>
+
+            </div>
+            </div>
+
         </div>
+    </div>
         <!--jumbutron ends-->
         <!--breadcrumb start-->
         <nav aria-label="breadcrumb">
@@ -40,12 +48,53 @@ include 'includes/check-if-added.php';
     <!--menu list-->
 
     <!--Inicia Seccion de Filipinas -->
-    <div class="row text-center" id="watch">
+    <div class='row text-center'>
+
+
+        <?php
+        require_once "includes/common.php";
+        mysqli_set_charset($con,"utf8");
+        
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $search = $_POST["search_item"];
+            $sql = "SELECT id, name, price, image FROM products WHERE name LIKE '%{$search}%' ORDER BY name DESC";
+        } else {
+            $sql = "SELECT id, name, price, image FROM products ORDER BY name DESC";
+        
+        }
+        $result = mysqli_query($con,$sql);
+        echo "<div class='row product-container'>";
+        while($consulta  = mysqli_fetch_array($result)){
+            $id = $consulta['id'];
+            
+            echo "
+             <div class='product'><ul>
+        <div class='card' style='width: 15rem;'>
+        <img src='/images/$IMAGEEN' class='img-fluid pb-1'  alt='imagen de $consulta[name]'>
+        <div class='card-body'>
+        <h5 class='card-title'>$consulta[name]</h5>
+        $$consulta[price]";
+        if (!isset($_SESSION['email'])) {?>
+            <p><a href="index.php#login" role="button" class="btn btn-warning  text-white ">Añadir al carrito</a></p>
+            <?php
+            } else {
+            if (check_if_added_to_cart($id)) {
+             echo '<p><a href="#" class="btn btn-warning  text-white" disabled>Added to cart</a></p>';
+            } else {
+                ?>
+                <p><a href="cart-add.php?id=<?php echo $id ?>" name="add" value="add" class="btn btn-warning  text-white">Añadir al carrito</a><p>
+                <?php
+                }
+            } echo "</div></div></div></ul>";
+        }
+        echo "</div>";
+        ?>
+
         <div class="col-md-3 col-6 py-2">
             <div class="card">
                 <img src="images/filipinaPrincesa.png" alt="" class="img-fluid pb-1" >
                 <div class="figure-caption">
-                    <h6>Filipina Médica de Mujer Princesa</h6>
+                    <h6> <?php  ?> </h6>
                     <h6>Precio: $600.00</h6>
                     <?php if (!isset($_SESSION['email'])) {?>
                     <p><a href="index.php#login" role="button" class="btn btn-warning  text-white ">Añadir al carrito</a></p>
@@ -63,6 +112,9 @@ include 'includes/check-if-added.php';
                 </div>
             </div>
         </div>
+
+
+
         <div class="col-md-3 col-6 py-2">
             <div class="card">
                 <img src="images/filipinaSegal.png" alt="" class="img-fluid pb-1">
@@ -107,6 +159,7 @@ include 'includes/check-if-added.php';
                 </div>
             </div>
         </div>
+        
         <div class="col-md-3 col-6 py-2">
             <div class="card">
                 <img src="images/filipinaSegal1.png" alt="" class="img-fluid pb-1">
@@ -130,11 +183,12 @@ include 'includes/check-if-added.php';
             </div>
         </div>
     </div>
+
     <!--Inicia Seccion de Quirurgicos -->
     <div class="row text-center" id="shirt">
             <div class="col-md-3 col-6 py-3" >
                 <div class="card">
-                    <img src="images/shirt1.jpg" alt="" class="img-fluid pb-1"  >
+                    <img src="images/pijamaQuirurgicaH.png" alt="" class="img-fluid pb-1"  >
                     <div class="figure-caption">
                     <h6>Pijama Quirúrgica de Hombre</h6>
                     <h6>Precio: $1000.00</h6>
@@ -156,7 +210,7 @@ include 'includes/check-if-added.php';
             </div>
             <div class="col-md-3 col-6 py-3">
                 <div class="card">
-                    <img src="images/shirt2.jpg" alt="" class="img-fluid pb-1" >
+                    <img src="images/quirurgicoH.png" alt="" class="img-fluid pb-1" >
                     <div class="figure-caption">
                     <h6>Pijama Quirúrgica de Hombre Antibacterial</h6>
                     <h6>Precio: $1,349.00</h6>
@@ -178,7 +232,7 @@ include 'includes/check-if-added.php';
             </div>
             <div class="col-md-3 col-6 py-3">
                 <div class="card">
-                    <img src="images/shirt3.jpg" alt="" class="img-fluid pb-1">
+                    <img src="images/quirurgicaM.png" alt="" class="img-fluid pb-1">
                     <div class="figure-caption">
                         <h6>Pijama Quirúrgica de Mujer</h6>
                         <h6>Precio: $600.00</h6>
@@ -200,12 +254,12 @@ include 'includes/check-if-added.php';
             </div>
             <div class="col-md-3 col-6 py-3" >
                 <div class="card">
-                    <img src="images/shirt4.jpg" alt="" class="img-fluid pb-1">
+                    <img src="images/antibacterialM.png" alt="" class="img-fluid pb-1">
                     <div class="figure-caption">
                         <h6>Pijama Quirúrgica de Mujer Catherine Antibacterial</h6>
                         <h6>Precio: $1349.00</h6>
                         <?php if (!isset($_SESSION['email'])) {?>
-                    <p><a href="index.php#login" role="button" class="btn btn-warning  text-white ">Añadir al carrito</a></p>
+                    <p><a href="index.php#login" role="button" class="btn btn-warning  text-white" value="">Añadir al carrito</a></p>
                     <?php
                     } else {
                         if (check_if_added_to_cart(8)) {
@@ -225,7 +279,7 @@ include 'includes/check-if-added.php';
         <div class="row text-center" id="shoes" >
                 <div class="col-md-3 col-6 py-3">
                     <div class="card">
-                        <img src="images/shoe1.jpg" alt="" class="img-fluid pb-1">
+                        <img src="images/bataParigi.png" alt="" class="img-fluid pb-1">
                         <div class="figure-caption">
                             <h6>Bata Médica de Mujer Parigi</h6>
                             <h6>Precio: $799.00</h6>
@@ -247,7 +301,7 @@ include 'includes/check-if-added.php';
                 </div>
                 <div class="col-md-3 col-6 py-3">
                     <div class="card">
-                        <img src="images/shoe2.jpg" alt="" class="img-fluid pb-1">
+                        <img src="images/bataAntib.png" alt="" class="img-fluid pb-1">
                         <div class="figure-caption">
                             <h6>Bata Médica de Mujer Musa Dama Win Antibacterial</h6>
                             <h6>Precio: $869.00</h6>
@@ -269,7 +323,7 @@ include 'includes/check-if-added.php';
                 </div>
                 <div class="col-md-3 col-6 py-3">
                     <div class="card">
-                        <img src="images/shoe3.jpg" alt="" class="img-fluid pb-1">
+                        <img src="images/toledo.png" alt="" class="img-fluid pb-1">
                         <div class="figure-caption">
                             <h6>Bata Médica de Hombre Toledo</h6>
                             <h6>Precio: $799.00</h6>
@@ -291,7 +345,7 @@ include 'includes/check-if-added.php';
                 </div>
                 <div class="col-md-3 col-6 py-3" >
                     <div class="card">
-                        <img src="images/shoe4.jpg" alt="" class="img-fluid pb-1">
+                        <img src="images/waterproof.png" alt="" class="img-fluid pb-1">
                         <div class="figure-caption">
                         <h6>Bata Médica de Hombre Wet Free Waterproof</h6>
                     <h6>Precio: $499.00</h6>
@@ -316,7 +370,7 @@ include 'includes/check-if-added.php';
             <div class="row text-center" id="headphones">
                     <div class="col-md-3 col-6 py-3" >
                         <div class="card">
-                            <img src="images/sp1.jpg" alt="" class="img-fluid pb-1">
+                            <img src="images/liso.png" alt="" class="img-fluid pb-1">
                             <div class="figure-caption">
                                 <h6>Gorro Quirúrgico Unisex Liso</h6>
                                 <h6>Precio: $149.00</h6>
@@ -338,7 +392,7 @@ include 'includes/check-if-added.php';
                     </div>
                     <div class="col-md-3 col-6 py-3">
                         <div class="card">
-                            <img src="images/sp2.jpg" alt="" class="img-fluid pb-1">
+                            <img src="images/cangurera.png" alt="" class="img-fluid pb-1">
                             <div class="figure-caption">
                                 <h6>Cangurera Quirúrgica Unisex Loulou</h6>
                                 <h6>Precio: $199.00</h6>
@@ -360,12 +414,12 @@ include 'includes/check-if-added.php';
                     </div>
                     <div class="col-md-3 col-6 py-3">
                         <div class="card">
-                            <img src="images/sp3.jpg" alt="" class="img-fluid pb-1">
+                            <img src="images/unisex.png" alt="" class="img-fluid pb-1">
                             <div class="figure-caption">
                                 <h6>Cofia Quirúrgica Unisex Protect</h6>
                                 <h6>Precio: $99.00</h6>
                                 <?php if (!isset($_SESSION['email'])) {?>
-                    <p><a href="index.php#login" role="button" class="btn btn-warning  text-white ">Añadir al carrito</a></p>
+                    <p><a href="index.php#login" role="button" class="btn btn-warning  text-white " >Añadir al carrito</a></p>
                     <?php
                     } else {
                     if (check_if_added_to_cart(15)) {
@@ -382,7 +436,7 @@ include 'includes/check-if-added.php';
                     </div>
                     <div class="col-md-3 col-6 py-3">
                         <div class="card">
-                            <img src="images/sp4.jpg" alt="" class="img-fluid pb-1">
+                            <img src="images/protect.png" alt="" class="img-fluid pb-1">
                             <div class="figure-caption">
                                 <h6>Gorro Protect Unisex</h6>
                                 <h6>Precio: $149.00</h6>

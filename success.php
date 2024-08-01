@@ -12,7 +12,7 @@ mysqli_query($con, $query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Planet Shopify | Online Shopping Site for Men</title>
+    <title>Jholsan | Uniformes Médicos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
     <link href='https://fonts.googleapis.com/css?family=Delius Swash Caps' rel='stylesheet'>
@@ -25,10 +25,10 @@ mysqli_query($con, $query);
 include 'includes/header_menu.php';
 ?>
     <div class="container-fluid mt-5 pt-5" id="content" style="margin-bottom:200px">
-            <div class="col-md-8 mx-auto">
-                <div class="jumbotron text-center">
-                      <h3>Your order is confirmed. Thank you for shopping with us.</h3><hr>
-                    <p>Click <a href="products.php">here</a> to purchase any other item.</p>
+            <div class="col-md-8_mx-auto">
+                <div class="boton" class="jumbotron_text-center">
+                      <h3>Pedido confirmado. Gracias por comprar con nosotros.</h3><hr>
+                    <p>Click <a href="products.php">aquí</a> para seguir viendo más productos.</p>
                 </div>
             </div>
         </div>

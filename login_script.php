@@ -13,7 +13,7 @@ $query="SELECT id,email_id,password from users where email_id='".$email."' and  
 $result=mysqli_query($con,$query);
 $num=mysqli_num_rows($result);
 if($num==0){
-    $m = "Porfavor ingrese correcto su Usuario y Password";
+    $m = "Usuario o password incorrecto";
     header('location: index.php?errorl='.$m);
 }else{
     $row = mysqli_fetch_array($result);
@@ -23,6 +23,8 @@ if($num==0){
     
 
 }
+
+
 
 
 

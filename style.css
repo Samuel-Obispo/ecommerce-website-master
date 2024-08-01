@@ -39,7 +39,7 @@ h6 {
 .footer{
     position: absolute;
     margin-top: 50px;
-    background-color: #141414;
+    background-color: #000000;
     min-height:150px;
     padding-top:40px;
     width: 100%;
@@ -51,7 +51,7 @@ h6 {
     color:black;
 }
 .container a:hover{
-    color:grey;
+    background-color: rgba(45,169,255);
     
 }
 #size{
@@ -73,5 +73,117 @@ h6 {
 }
 
 .cosita {
-    breadcrumb: rgba(45,169,255)
+    breadcrumb: rgba(45,169,255);
 }
+
+#nombrex {
+    background-color: rgb(45, 169, 255  );
+}
+
+-----------------------
+/* assets/css/styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 20px;
+    row-gap: 20px;
+}
+.product {
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 2%;
+    padding-left: 1em;
+    padding-right: 1em;
+    box-sizing: border-box;
+    display: block;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.15),
+    0px 10px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    overflow: hidden;
+    background-color: #fff;
+    top:1%;
+}
+.product {
+    text-decoration: none;
+    color: inherit;
+}
+button:hover {
+    background-color: #0056b3;
+}
+
+.navbar ul li a {
+    padding: 1em 1em 1em 1em;
+    color: #090909;
+
+text-decoration: none;
+font-weight: 600;
+}
+/* Style the search bar */
+.navbar .search-container {
+float: none;
+position: relative;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+.navbar input[type=text] {
+padding: 6px;
+margin-top: 8px;
+font-size: 15px;
+border-radius: 5px;
+}
+.navbar .search-container button {
+float: right;
+padding: 6px 10px;
+margin-top: 8px;
+margin-right: 16px;
+background: #ddd;
+font-size: 17px;
+border: none;
+cursor: pointer;
+}
+.navbar .search-container button:hover {
+background: #ccc;
+}
+

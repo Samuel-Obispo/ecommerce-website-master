@@ -25,7 +25,7 @@ include 'includes/check-if-added.php';
         <div id="bg" class=" ">
             <div class="container" style="padding-top:150px">
             <div class="mx-auto p-5 text-white" id="banner_content" style="border-radius: 0.5rem;" >
-            <h1>Bienvenido a Jholsan </h1>
+            <h1 style="color:white;">Bienvenido a Jholsan </h1>
             <p> Los mejores Uniformes Médicos </p>
             <a href="products.php" class="btn btn-light  btn-lg text-dark" class="btn btn-outline-primary">Compra Ahora!!</a>
 
@@ -50,7 +50,7 @@ include 'includes/check-if-added.php';
              </div>
             <div class="col-6 col-md-3 py-3 " >
                 <a href="products.php#shirt"  >
-                  <img src="images/quirurgico.png" class="img-fluid zoom" height="100" style="border-radius:0.5rem" >
+                  <img src="images/quirurgico1.png" class="img-fluid zoom" height="100" style="border-radius:0.5rem" >
                      <div class="h5 pt-3 font-weight-bolder">
                         Quirurgico
                      </div>
@@ -66,7 +66,7 @@ include 'includes/check-if-added.php';
              </div>
             <div class="col-6 col-md-3 py-3">
                 <a href="products.php#headphones">
-                 <img src="images/acessorios.png" class="img-fluid  " alt="" style="border-radius:0.5rem">
+                 <img src="images/accesorios.png"  class="img-fluid  " alt="" style="border-radius:0.5rem">
                  <div class="h5 pt-3 font-weight-bolder">
                     Accesorios
                  </div>
