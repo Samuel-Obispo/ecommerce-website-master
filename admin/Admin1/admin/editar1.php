@@ -1,50 +1,54 @@
 <?php
-$conexion = mysqli_connect('localhost', 'root', '','jholsan_uniformes   ');
+    require_once "../../../includes/common.php";
+    mysqli_set_charset($con,"utf8");
 
-if (!$conexion) {
-    die('Error de conexión: ' . mysqli_connect_error());
-}
+$errores = [];
+
 
 // Verificar si se ha proporcionado un ID
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     die('ID no proporcionado.');
 }
 
-$id = mysqli_real_escape_string($conexion, $_GET['id']);
+$id = mysqli_real_escape_string($con, $_GET['id']);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $isbn = mysqli_real_escape_string($conexion, $_POST['isbn']);
-    $nombre = mysqli_real_escape_string($conexion, $_POST['nombre']);
-    $autor = mysqli_real_escape_string($conexion, $_POST['autor']);
-    $precio = mysqli_real_escape_string($conexion, $_POST['precio']);
-    $editorial = mysqli_real_escape_string($conexion, $_POST['editorial']);
+    $nombre = $_POST['nombre'];
+    $precio = $_POST['precio'];
+    $proveedor = $_POST['proveedor'];
+    $image = $_FILES['imagen'];
 
-    $sqlActualizar = "UPDATE libros SET isbn='$isbn', nombre='$nombre', autor='$autor', precio='$precio', editorial='$editorial' WHERE id=$id";
+    if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
+        $image = $_FILES['imagen']['tmp_name'];
+        $imgContent = addslashes(file_get_contents($image));
+    }
+    $sqlActualizar = "UPDATE products SET name = '$nombre', price = '$precio', image='$imgContent' WHERE id=$id";
+    
 
-    if (mysqli_query($conexion, $sqlActualizar)) {
+    if (mysqli_query($con, $sqlActualizar)) {
         header("Location: index.php");
         exit();
     } else {
-        echo "Error actualizando el registro: " . mysqli_error($conexion);
+        echo "Error actualizando el registro: " . mysqli_error($con);
     }
 } else {
-    $sql = "SELECT * FROM libros WHERE id=$id";
-    $resultado = mysqli_query($conexion, $sql);
+    $sql = "SELECT * FROM products WHERE id=$id";
+    $resultado = mysqli_query($con, $sql);
 
     if (!$resultado) {
-        die('Error en la consulta: ' . mysqli_error($conexion));
+        die('Error en la consulta: ' . mysqli_error($con));
     }
 
     $libro = mysqli_fetch_assoc($resultado);
 
     if (!$libro) {
-        die('No se encontró un libro con el ID proporcionado.');
+        die('No se encontró un producto con el ID proporcionado.');
     }
 
     mysqli_free_result($resultado);
 }
 
-mysqli_close($conexion);
+mysqli_close($con);
 ?>
 
 <!DOCTYPE html>
@@ -100,17 +104,16 @@ mysqli_close($conexion);
 </head>
 <body>
     <h1>Editar un producto</h1>
-    <form method="post" action="">
-        <label for="isbn">ISBN:</label>
-        <input type="text" id="isbn" name="isbn" value="<?php echo htmlspecialchars($libro['isbn']); ?>">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" value="<?php echo htmlspecialchars($libro['nombre']); ?>">
-        <label for="autor">Autor:</label>
-        <input type="text" id="autor" name="autor" value="<?php echo htmlspecialchars($libro['autor']); ?>">
-        <label for="precio">Precio:</label>
-        <input type="number" id="precio" name="precio" value="<?php echo htmlspecialchars($libro['precio']); ?>">
-        <label for="editorial">Editorial:</label>
-        <input type="text" id="editorial" name="editorial" value="<?php echo htmlspecialchars($libro['editorial']); ?>">
+    <a href="index.php">Regresar</a>
+    <form action="" method="POST" enctype="multipart/form-data">
+        <label for="">nombre</label>
+        <input type="text" name="nombre">
+        <label for="">precio</label>
+        <input type="number" name="precio">
+        <label for="">Proveedor</label>
+        <input type="text" name="proveedor">
+        <label for="">imagen</label>
+        <input type="file" accept="image/*" name="imagen">
         <input type="submit" value="Actualizar">
     </form>
 </body>
